@@ -12,7 +12,7 @@ AV.Cloud.define('hello', function (request, response) {
 AV.Cloud.afterUpdate('Todo', function (request) {
     var query = new AV.Query('Host');
     query.equalTo("dataClass", "Todo");
-    query.equalTo("dataId", request.object.objectId);
+    query.equalTo("dataId", request.object.id);
     query.select("channelId");
 
     query.find({
@@ -21,6 +21,7 @@ AV.Cloud.afterUpdate('Todo', function (request) {
             for (var i = 0; i < channels.length; ++i) {
                 channelIds.push(channels[i].get('channelId'));
             }
+            console.log(channelIds);
             AV.Push.send({
                 channels: channelIds,
                 data: {
