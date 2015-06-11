@@ -18,7 +18,7 @@
     </form>
     <ul>
       <% for(var i=0; i<todos.length; i++) {%>
-      <li><%= todos[i].get('content') %></li>
+      <li><%= todos[i].get('content') %>[ <%= todos[i].id %> ]</li>
       <% } %>
     </ul>
   </body>

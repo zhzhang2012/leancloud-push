@@ -16,6 +16,13 @@ var subscribe = function () {
     })
 };
 
+var unsubscribe = function () {
+    var channelId = document.getElementById("channelId");
+    AVPush.unsubscribe([channelId.value], function() {
+        console.log("Successfully unsubscribed channel: " + channelId.value);
+    })
+};
+
 AVPush.on('message', function(data) {
     console.log('Received a new message from the data you listened.');
     console.log(JSON.stringify(data));
